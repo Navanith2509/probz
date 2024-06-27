@@ -133,13 +133,15 @@ function groupByWeek(data) {
     const timestamp = moment(item.timestamp);
     if (timestamp.isValid()) { // Check for valid timestamp
       const week = timestamp.startOf('week').week();
+      
       if (!acc[week]) {
         acc[week] = { week, value: 0 };
       }
       acc[week].value += Number(item.value); // Ensure numeric value
     }
-    console.log(acc); // Optional for debugging
-    return acc;
+    console.log(Object.values(acc)); // Optional for debugging
+    
+    return acc; 
   }, {});
 }
 
@@ -160,8 +162,6 @@ function groupByMonth(data) {
 
     
     if ( month!=="NaN" && !acc[month]) {
-      console.log(month)
-      console.log(typeof month);
       acc[month] = { month, value: 0 };
     }
 

@@ -169,22 +169,16 @@ const Chart = (data, timeframe ) => {
     const fetchData = async () => {
       const chartData = data
       setDataL(chartData.data);
-      
     };
     fetchData();
   }, [timeframe]);
-  if(jsonData!==dataL){
-    console.log(jsonData)
-    console.log(dataL)
-
-    console.log(data)
-  }
   
+  console.log("1time")
   
 
   return (
     <div className="chart-container">
-      <LineChart width={600} height={300} data={jsonData}>
+      <LineChart width={600} height={300} data={Object.values(dataL)}>
         <Line type="monotone" dataKey="value" stroke="#555" />
         <XAxis dataKey="timestamp" tickFormatter={formatTimestamp(timestamp)} />
         <YAxis />
